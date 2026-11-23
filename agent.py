@@ -23,7 +23,7 @@ client = genai.Client(
 )
 
 config= types.GenerateContentConfig(
-        tools=[get_revenue]  #registered get_revenue as a tool in Gemini SDK 
+        tools=[get_revenue, percent_change]  #registered get_revenue and percent_change as a tool in Gemini SDK 
 )
     
 try:
@@ -32,11 +32,23 @@ try:
         config=config
     )
 
-    response = chat.send_message(
-        "What was Home Care revenue in July?"
-    )
+    user_input = input("Ask your Business Analyst a question:")
 
-    print(response.text)
+    if not user_input.strip():
+        print("Please enter a valid question")
+    else:
+        response = chat.send_message(user_input)
+        print(response.text)
+
+
+
+    # response = chat.send_message(
+    #       "What was the percentage change in Home Care revenue from July to August? "
+    #       "If either month's revenue is unavailable, explain which data is missing "
+    #       "instead of calculating a percentage."
+    # )
+
+    
 
 except Exception as e:
     print(f"Agent request failed: {e}")
