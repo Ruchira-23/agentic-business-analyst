@@ -33,8 +33,19 @@ from datatools import get_revenue
 
 
 
-print(get_revenue("July", "Home Care"))
-print(get_revenue("July", "Home Care"))
+# print(get_revenue("July", "Home Care"))
+# print(get_revenue("July", "Home Care"))
 
-print(get_revenue("August", "Home Care"))
-print(get_revenue("August", "Home Care"))
+# print(get_revenue("August", "Home Care"))
+# print(get_revenue("August", "Home Care"))
+
+while True:
+    user_input = input("Ask your Business Analyst a question:")
+
+    if not user_input.strip():
+        print("Please enter a valid question")
+    elif user_input.strip().lower() == 'exit':
+        break
+    
+    else:
+        print(user_input)

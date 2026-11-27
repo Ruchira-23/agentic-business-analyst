@@ -32,22 +32,18 @@ try:
         config=config
     )
 
-    user_input = input("Ask your Business Analyst a question:")
+    while True:  #adding a while loop to make it an interactive chat bot situation
+        user_input = input("Ask your Business Analyst a question:")
 
-    if not user_input.strip():
-        print("Please enter a valid question")
-    else:
-        response = chat.send_message(user_input)
-        print(response.text)
+        if not user_input.strip():
+         print("Please enter a valid question")
+        
+        elif user_input.strip().lower()=='exit':
+            break
 
-
-
-    # response = chat.send_message(
-    #       "What was the percentage change in Home Care revenue from July to August? "
-    #       "If either month's revenue is unavailable, explain which data is missing "
-    #       "instead of calculating a percentage."
-    # )
-
+        else:
+            response = chat.send_message(user_input)
+            print(response.text)
     
 
 except Exception as e:
